@@ -1,52 +1,59 @@
 function App() {
+  const tituloNoticia = "Título";
+  const tituloSeccion = "Titular de la noticia";
+  const cuerpoNoticia =
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint adipisci eos laborum id, ullam cupiditate magni enim. Reiciendis itaque delectus pariatur sit dolores atque aspernatur explicabo iste saepe? Animi, ex.";
+  const tituloAside = "Categorías";
+  const subtituloAside = "Otras cosas";
+  const arrayLinks = ["hola", "adiós", "ciao"];
+  const arrayCategorias = [
+    "Noticias de deporte",
+    "Noticias de ocio",
+    "Noticias de política",
+    "Noticias de espectáculos",
+  ];
+  const arrayOtrasCosas = ["Nosequé", "Nosecuánto", "Talycual"];
+  const textoCopyright = true;
   return (
     <div className="contenedor-general">
       <header className="cabecera d-flex align-items-center justify-content-between">
-        <h1 className="col m-0">Título</h1>
+        <h1 className="col m-0">{tituloNoticia}</h1>
         <nav className="col text-right">
           <ul className="list-inline m-0">
-            <li className="list-inline-item">hola</li>
-            <li className="list-inline-item">adiós</li>
-            <li className="list-inline-item">ciao</li>
+            {arrayLinks.map((link) => (
+              <li className="list-inline-item" key={link}>
+                {link}
+              </li>
+            ))}
           </ul>
         </nav>
       </header>
       <div className="contenido d-flex flex-wrap">
         <main className="cuerpo-principal">
           <section>
-            <h2>Titular de la noticia</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-              adipisci eos laborum id, ullam cupiditate magni enim. Reiciendis
-              itaque delectus pariatur sit dolores atque aspernatur explicabo
-              iste saepe? Animi, ex.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-              numquam, sunt pariatur tempora ea incidunt doloribus maxime aut
-              accusamus atque at obcaecati sapiente illum ipsum, vel voluptatem
-              dolor rem deserunt!
-            </p>
+            <h2>{tituloSeccion}</h2>
+            <p>{cuerpoNoticia}</p>
+            <p>{cuerpoNoticia}</p>
           </section>
         </main>
         <aside className="sidebar">
-          <h2>Categorías</h2>
+          <h2>{tituloAside}</h2>
           <ul>
-            <li>Noticias de deporte</li>
-            <li>Noticias de ocio</li>
-            <li>Noticias de política</li>
-            <li>Noticias de espectáculos</li>
+            {arrayCategorias.map((categoria) => (
+              <li key={categoria}>{categoria}</li>
+            ))}
           </ul>
-          <h2>Otras cosas</h2>
+          <h2>{subtituloAside}</h2>
           <ul>
-            <li>Nosequé</li>
-            <li>Nosecuánto</li>
-            <li>Talycual</li>
+            {arrayOtrasCosas.map((otraCosa) => (
+              <li key={otraCosa}>{otraCosa}</li>
+            ))}
           </ul>
         </aside>
       </div>
       <footer className="pie d-flex align-items-center justify-content-center">
-        Texto del footer
+        {textoCopyright &&
+          `Texto del footer - Ningún derecho reservado, copia lo que quieras`}
       </footer>
     </div>
   );
