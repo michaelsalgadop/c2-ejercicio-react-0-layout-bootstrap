@@ -1,3 +1,7 @@
+import { Cabecera } from "./componentes/Cabecera";
+import { Noticia } from "./componentes/Noticia";
+import { Sidebar } from "./componentes/Sidebar";
+
 function App() {
   const tituloNoticia = "Título";
   const tituloSeccion = "Titular de la noticia";
@@ -16,40 +20,21 @@ function App() {
   const textoCopyright = true;
   return (
     <div className="contenedor-general">
-      <header className="cabecera d-flex align-items-center justify-content-between">
-        <h1 className="col m-0">{tituloNoticia}</h1>
-        <nav className="col text-right">
-          <ul className="list-inline m-0">
-            {arrayLinks.map((link) => (
-              <li className="list-inline-item" key={link}>
-                {link}
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
+      <Cabecera
+        tituloNoticia={tituloNoticia}
+        arrayLinks={arrayLinks}
+      ></Cabecera>
       <div className="contenido d-flex flex-wrap">
-        <main className="cuerpo-principal">
-          <section>
-            <h2>{tituloSeccion}</h2>
-            <p>{cuerpoNoticia}</p>
-            <p>{cuerpoNoticia}</p>
-          </section>
-        </main>
-        <aside className="sidebar">
-          <h2>{tituloAside}</h2>
-          <ul>
-            {arrayCategorias.map((categoria) => (
-              <li key={categoria}>{categoria}</li>
-            ))}
-          </ul>
-          <h2>{subtituloAside}</h2>
-          <ul>
-            {arrayOtrasCosas.map((otraCosa) => (
-              <li key={otraCosa}>{otraCosa}</li>
-            ))}
-          </ul>
-        </aside>
+        <Noticia
+          tituloSeccion={tituloSeccion}
+          cuerpoNoticia={cuerpoNoticia}
+        ></Noticia>
+        <Sidebar
+          tituloAside={tituloAside}
+          arrayCategorias={arrayCategorias}
+          subtituloAside={subtituloAside}
+          arrayOtrasCosas={arrayOtrasCosas}
+        ></Sidebar>
       </div>
       <footer className="pie d-flex align-items-center justify-content-center">
         {textoCopyright &&
